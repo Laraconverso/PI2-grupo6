@@ -2,8 +2,9 @@ package com.APIclubApp.clubApp.model;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name="users")
+@MappedSuperclass
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Table(name="users")
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +56,12 @@ public abstract class User {
         this.userAddress = userAddress;
         this.role = role;
         this.club = club;
+    }
+
+    public User(String userDni) {
+
+        this.userDni = userDni;
+
     }
 
     public Long getIdUser() {

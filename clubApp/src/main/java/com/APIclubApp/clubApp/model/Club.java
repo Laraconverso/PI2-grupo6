@@ -20,30 +20,43 @@ public class Club {
     @Column(name = "club_logo", nullable = false)
     private String clubLogo;
 
-    @Column(name = "club_u", nullable = false)
-    private String productDescription;
+    @Column(name = "club_description", nullable = false)
+    private String clubDescription;
 
     @OneToMany(mappedBy = "club", fetch = FetchType.EAGER)
     @JsonIgnore
     //private List<User> usersClub;
-    private Set<User> usersClub =new HashSet<User>();
+    private Set<Coach> coaches =new HashSet<Coach>();
+
+    @OneToMany(mappedBy = "club", fetch = FetchType.EAGER)
+    @JsonIgnore
+    //private List<User> usersClub;
+    private Set<Member> members =new HashSet<Member>();
 
     public Club() {
     }
 
-    public Club(Long idClub, String clubName, String clubLogo, String productDescription, Set<User> usersClub) {
+    public Club(String clubName, String clubLogo, String clubDescription) {
+        this.clubName = clubName;
+        this.clubLogo = clubLogo;
+        this.clubDescription = clubDescription;
+    }
+
+    public Club(String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Member> members) {
+        this.clubName = clubName;
+        this.clubLogo = clubLogo;
+        this.clubDescription = clubDescription;
+        this.coaches = coaches;
+        this.members = members;
+    }
+
+    public Club(Long idClub, String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Member> members) {
         this.idClub = idClub;
         this.clubName = clubName;
         this.clubLogo = clubLogo;
-        this.productDescription = productDescription;
-        this.usersClub = usersClub;
-    }
-
-    public Club(String clubName, String clubLogo, String productDescription, Set<User> usersClub) {
-        this.clubName = clubName;
-        this.clubLogo = clubLogo;
-        this.productDescription = productDescription;
-        this.usersClub = usersClub;
+        this.clubDescription = clubDescription;
+        this.coaches = coaches;
+        this.members = members;
     }
 
     public Long getIdClub() {
@@ -70,19 +83,27 @@ public class Club {
         this.clubLogo = clubLogo;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public String getClubDescription() {
+        return clubDescription;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setClubDescription(String clubDescription) {
+        this.clubDescription = clubDescription;
     }
 
-    public Set<User> getUsersClub() {
-        return usersClub;
+    public Set<Coach> getCoaches() {
+        return coaches;
     }
 
-    public void setUsersClub(Set<User> usersClub) {
-        this.usersClub = usersClub;
+    public void setCoaches(Set<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
+    public Set<Member> getPartners() {
+        return members;
+    }
+
+    public void setPartners(Set<Member> members) {
+        this.members = members;
     }
 }

@@ -3,12 +3,15 @@ package com.APIclubApp.clubApp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="players")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id_player")
+    @Column(name = "id_player")
     private Long idPlayer;
 
     @Column(name = "player_name", nullable = false, unique = false)
@@ -26,25 +29,49 @@ public class Player {
     @Column(name = "player_goals", nullable = false, unique = false)
     private Boolean playerGoals;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="socio_number")
-    private Partner partner;
+    @Column(name = "player_image", nullable = false, unique = false)
+    private Boolean playerImage;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_team")
+    @PrimaryKeyJoinColumn(name = "member_number")
+    //@JoinColumn(name = "member_number")
+    private Member member;
+
+    /*@JoinColumns({
+            @JoinColumn(name = "partner_number", referencedColumnName = "partner_number"),
+            @JoinColumn(name = "idUser", referencedColumnName = "idUser")
+    })
+    private Partner partner;*/
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_team")
     private Team team;
+
+    @OneToOne(mappedBy = "player", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Statistic statistic;
 
     public Player() {
     }
 
-    public Player(Long idPlayer, Boolean playerName, Boolean playerLastname, Boolean playerDni, Boolean playerPosition, Boolean playerGoals, Partner partner, Team team) {
+    public Player(Boolean playerName, Boolean playerLastname, Boolean playerDni, Boolean playerPosition, Boolean playerGoals, Member member, Team team) {
+        this.playerName = playerName;
+        this.playerLastname = playerLastname;
+        this.playerDni = playerDni;
+        this.playerPosition = playerPosition;
+        this.playerGoals = playerGoals;
+        this.member = member;
+        this.team = team;
+    }
+
+    public Player(Long idPlayer, Boolean playerName, Boolean playerLastname, Boolean playerDni, Boolean playerPosition, Boolean playerGoals, Member member, Team team) {
         this.idPlayer = idPlayer;
         this.playerName = playerName;
         this.playerLastname = playerLastname;
         this.playerDni = playerDni;
         this.playerPosition = playerPosition;
         this.playerGoals = playerGoals;
-        this.partner = partner;
+        this.member = member;
         this.team = team;
     }
 
@@ -96,12 +123,20 @@ public class Player {
         this.playerGoals = playerGoals;
     }
 
-    public Partner getPartner() {
-        return partner;
+    public Boolean getPlayerImage() {
+        return playerImage;
     }
 
-    public void setPartner(Partner partner) {
-        this.partner = partner;
+    public void setPlayerImage(Boolean playerImage) {
+        this.playerImage = playerImage;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Team getTeam() {
@@ -112,3 +147,4 @@ public class Player {
         this.team = team;
     }
 }
+

@@ -17,7 +17,8 @@ public class Team {
     private Long idTeam;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_coach")
+    @PrimaryKeyJoinColumn(name = "coach_number")
+   // @JoinColumn(name="coach_number")
     private Coach coach;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -40,14 +41,15 @@ public class Team {
     @JsonIgnore
     private Set<Player> playersTeam = new HashSet<Player>();
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    @JoinTable(name = "team_has_game", joinColumns = @JoinColumn(name = "id_team"), inverseJoinColumns = @JoinColumn(name = "id_game"))
-    private List<Game> games;
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Game> gamesTeam = new HashSet<Game>();
+
 
     public Team() {
     }
 
-    public Team(Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam, List<Game> games) {
+    public Team(Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam) {
         this.coach = coach;
         this.category = category;
         this.teamName = teamName;
@@ -55,10 +57,10 @@ public class Team {
         this.teamDaytraining = teamDaytraining;
         this.teamFee = teamFee;
         this.playersTeam = playersTeam;
-        this.games = games;
+
     }
 
-    public Team(Long idTeam, Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam, List<Game> games) {
+    public Team(Long idTeam, Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam) {
         this.idTeam = idTeam;
         this.coach = coach;
         this.category = category;
@@ -67,7 +69,7 @@ public class Team {
         this.teamDaytraining = teamDaytraining;
         this.teamFee = teamFee;
         this.playersTeam = playersTeam;
-        this.games = games;
+
     }
 
     public Long getIdTeam() {
@@ -134,11 +136,4 @@ public class Team {
         this.playersTeam = playersTeam;
     }
 
-    public List<Game> getGames() {
-        return games;
-    }
-
-    public void setGames(List<Game> games) {
-        this.games = games;
-    }
 }
