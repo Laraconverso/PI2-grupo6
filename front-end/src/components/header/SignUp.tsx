@@ -33,7 +33,7 @@ const SignUp = ({ setModal }: { setModal: Dispatch<SetStateAction<"logIn" | "sig
           placeholder="DNI" />
         </div>
       </form>
-      <button className="bg-silver-950 font-bold text-sm -600 w-fit py-1 px-4 m-auto rounded-3xl hover:scale-105 transition drop-shadow-md">INGRESAR</button>
+      <button className="bg-silver-950 font-bold text-sm-600 w-fit py-1 px-4 m-auto rounded-3xl hover:scale-105 transition drop-shadow-md">INGRESAR</button>
     </div>
   </div>
 
