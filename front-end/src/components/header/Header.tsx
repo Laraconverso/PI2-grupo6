@@ -11,7 +11,7 @@ const Header = () => {
   const [modalState, setModalState] = useState<"logIn" | "signUp" | "none">("none")
 
   return (
-    <header className="w-screen fixed top-0 flex flex-row justify-between z-10 bg-silver-950 bg-opacity-40">
+    <header className="w-screen top-0  z-10 ">
       {
         (() => {
           switch (modalState) {
@@ -25,6 +25,7 @@ const Header = () => {
           }
         })()
       }
+      <div className={`flex flex-row justify-between bg-silver-950 bg-opacity-60`}>
       <figure className="text-white p-3">
         <Image src={logo} alt="Club App logo" height={60}/> 
       </figure>
@@ -33,10 +34,11 @@ const Header = () => {
         <MobileNavbar setModal={setModalState} />
         <div className="hidden md:flex gap-4 pr-3">
 
-          <button className="px-3 bg-primary-500 h-fit rounded-xl py-1 font-semibold text-silver-950 " onClick={()=>setModalState("logIn")}>INGRESAR</button>
+          <button className="px-5 bg-primary-500 h-fit rounded-3xl py-3 font-semibold text-silver-950 shadow-xl" onClick={()=>setModalState("logIn")}>Iniciar sesion</button>
           <button onClick={()=>setModalState("signUp")}>REGISTRARSE</button>
         </div>
       </nav>
+      </div>
     </header>
   )
 }
@@ -89,7 +91,7 @@ const MobileNavbar = ({ setModal }: { setModal: Dispatch<SetStateAction<"logIn" 
         id="navbar-default"
       >
         <ul className="font-medium flex flex-col gap-4 p-4 mt-4 border border-gray-500 rounded-s-lg bg-primary-950 rtl:space-x-reverse">
-          <li className=""><button onClick={() => selectOption("logIn")}>Ingresar</button></li>
+          <li className=""><button onClick={() => selectOption("logIn")}>Iniciar sesion</button></li>
           <li><button onClick={() => selectOption("signUp")}>Registrarse</button></li>
         </ul>
       </div>
