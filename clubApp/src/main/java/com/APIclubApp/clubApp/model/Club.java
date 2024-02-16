@@ -31,7 +31,7 @@ public class Club {
     @OneToMany(mappedBy = "club", fetch = FetchType.EAGER)
     @JsonIgnore
     //private List<User> usersClub;
-    private Set<Member> members =new HashSet<Member>();
+    private Set<Player> players =new HashSet<Player>();
 
     public Club() {
     }
@@ -42,21 +42,21 @@ public class Club {
         this.clubDescription = clubDescription;
     }
 
-    public Club(String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Member> members) {
+    public Club(String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Player> players) {
         this.clubName = clubName;
         this.clubLogo = clubLogo;
         this.clubDescription = clubDescription;
         this.coaches = coaches;
-        this.members = members;
+        this.players = players;
     }
 
-    public Club(Long idClub, String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Member> members) {
+    public Club(Long idClub, String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Player> players) {
         this.idClub = idClub;
         this.clubName = clubName;
         this.clubLogo = clubLogo;
         this.clubDescription = clubDescription;
         this.coaches = coaches;
-        this.members = members;
+        this.players = players;
     }
 
     public Long getIdClub() {
@@ -99,11 +99,11 @@ public class Club {
         this.coaches = coaches;
     }
 
-    public Set<Member> getPartners() {
-        return members;
+    public Set<Player> getPartners() {
+        return players;
     }
 
-    public void setPartners(Set<Member> members) {
-        this.members = members;
+    public void setPartners(Set<Player> players) {
+        this.players = players;
     }
 }

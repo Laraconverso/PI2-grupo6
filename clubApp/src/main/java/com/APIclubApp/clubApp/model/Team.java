@@ -2,11 +2,16 @@ package com.APIclubApp.clubApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="team")
 public class Team {
@@ -45,95 +50,9 @@ public class Team {
     @JsonIgnore
     private Set<Game> gamesTeam = new HashSet<Game>();
 
+    @OneToOne(mappedBy = "team", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Statistic statistic;
 
-    public Team() {
-    }
-
-    public Team(Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam) {
-        this.coach = coach;
-        this.category = category;
-        this.teamName = teamName;
-        this.teamSchedule = teamSchedule;
-        this.teamDaytraining = teamDaytraining;
-        this.teamFee = teamFee;
-        this.playersTeam = playersTeam;
-
-    }
-
-    public Team(Long idTeam, Coach coach, Category category, String teamName, String teamSchedule, String teamDaytraining, String teamFee, Set<Player> playersTeam) {
-        this.idTeam = idTeam;
-        this.coach = coach;
-        this.category = category;
-        this.teamName = teamName;
-        this.teamSchedule = teamSchedule;
-        this.teamDaytraining = teamDaytraining;
-        this.teamFee = teamFee;
-        this.playersTeam = playersTeam;
-
-    }
-
-    public Long getIdTeam() {
-        return idTeam;
-    }
-
-    public void setIdTeam(Long idTeam) {
-        this.idTeam = idTeam;
-    }
-
-    public Coach getCoach() {
-        return coach;
-    }
-
-    public void setCoach(Coach coach) {
-        this.coach = coach;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-    public String getTeamSchedule() {
-        return teamSchedule;
-    }
-
-    public void setTeamSchedule(String teamSchedule) {
-        this.teamSchedule = teamSchedule;
-    }
-
-    public String getTeamDaytraining() {
-        return teamDaytraining;
-    }
-
-    public void setTeamDaytraining(String teamDaytraining) {
-        this.teamDaytraining = teamDaytraining;
-    }
-
-    public String getTeamFee() {
-        return teamFee;
-    }
-
-    public void setTeamFee(String teamFee) {
-        this.teamFee = teamFee;
-    }
-
-    public Set<Player> getPlayersTeam() {
-        return playersTeam;
-    }
-
-    public void setPlayersTeam(Set<Player> playersTeam) {
-        this.playersTeam = playersTeam;
-    }
 
 }

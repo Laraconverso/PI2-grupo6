@@ -2,10 +2,15 @@ package com.APIclubApp.clubApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="statistics")
 public class Statistic {
@@ -22,54 +27,8 @@ public class Statistic {
     private Integer goalAssisted;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_Player")
-    private Player player;
+    @JoinColumn(name = "id_team")
+    private Team team;
 
-    public Statistic() {
-    }
 
-    public Statistic(Integer goalScored, Integer goalAssisted, Player player) {
-        this.goalScored = goalScored;
-        this.goalAssisted = goalAssisted;
-        this.player = player;
-    }
-
-    public Statistic(Long idStatistic, Integer goalScored, Integer goalAssisted, Player player) {
-        this.idStatistic = idStatistic;
-        this.goalScored = goalScored;
-        this.goalAssisted = goalAssisted;
-        this.player = player;
-    }
-
-    public Long getIdStatistic() {
-        return idStatistic;
-    }
-
-    public void setIdStatistic(Long idStatistic) {
-        this.idStatistic = idStatistic;
-    }
-
-    public Integer getGoalScored() {
-        return goalScored;
-    }
-
-    public void setGoalScored(Integer goalScored) {
-        this.goalScored = goalScored;
-    }
-
-    public Integer getGoalAssisted() {
-        return goalAssisted;
-    }
-
-    public void setGoalAssisted(Integer goalAssisted) {
-        this.goalAssisted = goalAssisted;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
 }
