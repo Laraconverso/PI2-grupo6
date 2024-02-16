@@ -8,21 +8,23 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name="players")
 public class Player extends User{
 
-    @Id
+//    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_player")
     private Long idPlayer;
 
     @Column(name = "player_position", nullable = false, unique = false)
-    private Boolean playerPosition;
+    private Long playerPosition;
 
     @Column(name = "player_image", nullable = false, unique = false)
     private String playerImage;
@@ -35,6 +37,7 @@ public class Player extends User{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_team")
+    @JsonIgnore
     private Team team;
 
 

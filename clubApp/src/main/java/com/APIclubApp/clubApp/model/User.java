@@ -1,5 +1,6 @@
 package com.APIclubApp.clubApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,11 +40,14 @@ public abstract class User {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role")
+    @JsonIgnore
     private Role role;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_club")
+    @JsonIgnore
     private Club club;
+
 
 
 
