@@ -18,7 +18,7 @@ import java.util.Set;
 @Table(name="players")
 public class Player extends User{
 
-//    @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_player")
     private Long idPlayer;

@@ -7,13 +7,13 @@ public interface PlayerService {
 
     List<Player> listAllPlayers();
 
-    Player addPlayer(Player player);
+    Player savePlayer(Player player);
 
     Player getPlayerById(Long id);
 
     Player updatePlayer(Player player);
 
-    void deleteClub(Long id);
+    void deletePlayer(Long id);
 
     Player getPlayerByDNI(String dni);
 }

@@ -4,15 +4,20 @@ import com.APIclubApp.clubApp.model.Player;
 import com.APIclubApp.clubApp.repository.PlayerRepository;
 import com.APIclubApp.clubApp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
+    private final PlayerRepository playerRepository;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @Autowired
-    public PlayerRepository playerRepository;
+    public PlayerServiceImpl(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
     @Override
     public List<Player> listAllPlayers() {
@@ -20,7 +25,10 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player addPlayer(Player player) {
+    public Player savePlayer(Player player) {
+        //Role role = roleRepository.findByNombre("User");
+        //player.setRole(role);
+//        player.setUserPassword(passwordEncoder.encode(player.getUserPassword()));
         return playerRepository.save(player);
     }
 
@@ -29,14 +37,22 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.findById(id).get();
     }
 
-    @Override
-    public Player updatePlayer(Player player) {
-        return playerRepository.save(player);
-    }
 
     @Override
-    public void deleteClub(Long id) {
-        playerRepository.deleteById(id);
+    public Player updatePlayer(Player updatedPlayer) {
+        if (playerRepository.existsById(updatedPlayer.getIdPlayer())) {
+            return playerRepository.save(updatedPlayer);
+        } else {
+            throw new RuntimeException("Player not found with id: " + updatedPlayer.getIdPlayer());
+        }
+    }
+
+    public void deletePlayer(Long id) {
+        if (playerRepository.existsById(id)) {
+            playerRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Player not found with id: " + id);
+        }
     }
 
     @Override

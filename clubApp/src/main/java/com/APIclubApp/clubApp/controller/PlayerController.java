@@ -37,7 +37,7 @@ public class PlayerController {
         ResponseEntity<Player> response;
 
         if (playerService.getPlayerByDNI(String.valueOf(dni))!=null){
-            response = ResponseEntity.ok(playerService.getPlayerByDNI(String.valueOf(dni))) ;
+            response = ResponseEntity.ok(playerService.getPlayerByDNI(String.valueOf(dni)));
         }else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -52,9 +52,27 @@ public class PlayerController {
 
     @PostMapping("/save")
     @PermitAll
-    public ResponseEntity<Player> saveClub(@RequestBody Player player){
-        return ResponseEntity.ok(playerService.addPlayer(player));
+    public ResponseEntity<Player> savePlayer(@RequestBody Player player){
+        return ResponseEntity.ok(playerService.savePlayer(player));
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteUsuario(@PathVariable Long id){
+        if (playerService.getPlayerById(Long.valueOf(id))!=null){
+           playerService.deletePlayer(Long.valueOf(id));
+        }else {
+            System.out.println("Player does not exist");
+        }
+    }
+
+    @PutMapping()
+    public ResponseEntity<Player> updatePlayer(@RequestBody Player player){
+        Player player1 = playerService.getPlayerById(player.getIdPlayer());
+        if ( player1!= null && player1.getIdPlayer() != null)
+            return ResponseEntity.ok(playerService.updatePlayer(player));
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+    }
 
 }
