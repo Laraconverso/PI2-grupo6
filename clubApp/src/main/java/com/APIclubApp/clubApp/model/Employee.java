@@ -1,8 +1,6 @@
 package com.APIclubApp.clubApp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -15,7 +13,9 @@ import lombok.*;
 @Table(name="emplyees")
 public class Employee extends User{
 
-    @Column(name= "employee_number", nullable = false, unique = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "employee_number")
     private Long employeeNumber;
 
 }
