@@ -23,7 +23,7 @@ public class Player extends User{
     @Column(name = "id_player")
     private Long idPlayer;
 
-    @Column(name = "player_position", nullable = false, unique = false)
+    @Column(name = "player_position", nullable = true, unique = false)
     private Long playerPosition;
 
     @Column(name = "player_image", nullable = false, unique = false)
@@ -31,6 +31,9 @@ public class Player extends User{
 
     @Column(name = "player_feePaid", nullable = false, unique = false)
     private Boolean playerFeePaid;
+
+    @Column(name = "player_birthdate", nullable = false, unique = false)
+    private String birthdate;
 
     /*@Column(name = "member_ChangePassword", nullable = false, unique = false)
     private Boolean memberChangePassword;*/

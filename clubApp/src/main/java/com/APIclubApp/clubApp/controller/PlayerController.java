@@ -6,6 +6,7 @@ import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public class PlayerController {
 
     @Autowired
     private PlayerService playerService;
+
+    //private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @GetMapping("/get/{id}")
     @PermitAll
@@ -53,6 +56,10 @@ public class PlayerController {
     @PostMapping("/save")
     @PermitAll
     public ResponseEntity<Player> savePlayer(@RequestBody Player player){
+        //ROL
+        //Role role = roleRepository.findByNombre("User");
+        //player.setRole(role);
+//        player.setUserPassword(passwordEncoder.encode(player.getUserPassword()));
         return ResponseEntity.ok(playerService.savePlayer(player));
     }
 

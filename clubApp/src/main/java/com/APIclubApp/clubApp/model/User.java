@@ -15,10 +15,6 @@ import lombok.Setter;
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@Table(name="users")
 public abstract class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
-    private Long idUser;
 
     @Column(name= "user_name", nullable = false, unique = false)
     private String userName;

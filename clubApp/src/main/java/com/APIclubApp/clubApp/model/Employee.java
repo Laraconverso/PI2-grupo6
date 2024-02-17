@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name="emplyees")
+@Table(name="employees")
 public class Employee extends User{
 
     @Id

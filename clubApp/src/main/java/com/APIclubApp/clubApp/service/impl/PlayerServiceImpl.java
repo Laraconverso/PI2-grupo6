@@ -12,7 +12,6 @@ import java.util.List;
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     public PlayerServiceImpl(PlayerRepository playerRepository) {
@@ -26,9 +25,6 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player savePlayer(Player player) {
-        //Role role = roleRepository.findByNombre("User");
-        //player.setRole(role);
-//        player.setUserPassword(passwordEncoder.encode(player.getUserPassword()));
         return playerRepository.save(player);
     }
 
