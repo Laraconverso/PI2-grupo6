@@ -2,9 +2,17 @@ package com.APIclubApp.clubApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name= "clubs")
@@ -33,77 +41,10 @@ public class Club {
     //private List<User> usersClub;
     private Set<Player> players =new HashSet<Player>();
 
-    public Club() {
-    }
+    @OneToMany(mappedBy = "club", fetch = FetchType.EAGER)
+    @JsonIgnore
+    //private List<User> usersClub;
+    private Set<Employee> employees =new HashSet<Employee>();
 
-    public Club(String clubName, String clubLogo, String clubDescription) {
-        this.clubName = clubName;
-        this.clubLogo = clubLogo;
-        this.clubDescription = clubDescription;
-    }
 
-    public Club(String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Player> players) {
-        this.clubName = clubName;
-        this.clubLogo = clubLogo;
-        this.clubDescription = clubDescription;
-        this.coaches = coaches;
-        this.players = players;
-    }
-
-    public Club(Long idClub, String clubName, String clubLogo, String clubDescription, Set<Coach> coaches, Set<Player> players) {
-        this.idClub = idClub;
-        this.clubName = clubName;
-        this.clubLogo = clubLogo;
-        this.clubDescription = clubDescription;
-        this.coaches = coaches;
-        this.players = players;
-    }
-
-    public Long getIdClub() {
-        return idClub;
-    }
-
-    public void setIdClub(Long idClub) {
-        this.idClub = idClub;
-    }
-
-    public String getClubName() {
-        return clubName;
-    }
-
-    public void setClubName(String clubName) {
-        this.clubName = clubName;
-    }
-
-    public String getClubLogo() {
-        return clubLogo;
-    }
-
-    public void setClubLogo(String clubLogo) {
-        this.clubLogo = clubLogo;
-    }
-
-    public String getClubDescription() {
-        return clubDescription;
-    }
-
-    public void setClubDescription(String clubDescription) {
-        this.clubDescription = clubDescription;
-    }
-
-    public Set<Coach> getCoaches() {
-        return coaches;
-    }
-
-    public void setCoaches(Set<Coach> coaches) {
-        this.coaches = coaches;
-    }
-
-    public Set<Player> getPartners() {
-        return players;
-    }
-
-    public void setPartners(Set<Player> players) {
-        this.players = players;
-    }
 }
