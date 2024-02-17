@@ -21,11 +21,14 @@ public class Player extends User{
     @Column(name = "id_player")
     private Long idPlayer;
 
-    @Column(name = "player_position", nullable = false, unique = false)
-    private Boolean playerPosition;
+    @Column(name = "player_position", nullable = true, unique = false)
+    private Long playerPosition;
 
     @Column(name = "player_image", nullable = false, unique = false)
     private String playerImage;
+
+    @Column(name = "player_birthdate", nullable = false, unique = false)
+    private String playerBirthdate;
 
     @Column(name = "player_feePaid", nullable = false, unique = false)
     private Boolean playerFeePaid;
