@@ -8,10 +8,12 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name="players")
 public class Player extends User{
@@ -33,11 +35,15 @@ public class Player extends User{
     @Column(name = "player_feePaid", nullable = false, unique = false)
     private Boolean playerFeePaid;
 
+    @Column(name = "player_birthdate", nullable = false, unique = false)
+    private String birthdate;
+
     /*@Column(name = "member_ChangePassword", nullable = false, unique = false)
     private Boolean memberChangePassword;*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_team")
+    @JsonIgnore
     private Team team;
 
 

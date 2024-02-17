@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,7 +18,6 @@ public class Employee extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="employee_number")
     private Long employeeNumber;
-
 
 
 }
