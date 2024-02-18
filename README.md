@@ -44,7 +44,6 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/4457567e-d1ea-4053-9eae-9885bd5d5af3" width="80px">
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/a11f45b5-4eb1-4ee1-91f5-7eb5315e9dbe" width="80px">
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/261f55d9-07f8-4505-a28c-61233762303f" width="80px">
-        <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/c1072679-9bae-4f3a-acb2-c984da03f149" width="80px">
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/1e227b6d-238f-422f-9bbf-1588c1d23ca2" width="80px">
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/d76961f2-08ec-471e-9833-57ed4f3f6205" width="80px">
         <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/01f03cfb-579b-48a0-8578-c85706d19ae5" width="80px">
