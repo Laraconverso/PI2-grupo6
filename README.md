@@ -12,7 +12,6 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
 - [Uso](#uso)
 - [Estructura_Backend](#estructura_backend)
 - [Estructura_Frontend](#estructura_frontend)
-
 - [Instalación](#instalación)
 - [Licencia](#licencia)
 
