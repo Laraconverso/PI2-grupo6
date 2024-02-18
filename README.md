@@ -48,6 +48,7 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
             - Spring boot
             - Java
             - MySql
+            
 - [volver](#volver)
 
 ## Características
@@ -55,7 +56,7 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
     ✔️ validación de usuarios por dni
     ✔️ login de usuarios
     ✔️ Gestión de jugadores como usuario empleado
-    ✔️ Interfaz de usuario responsive
+    ✔️ Interfaz de usuario responsive    
 - [volver](#volver)
 
 ## Diagrama_de_red
@@ -107,6 +108,7 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
                         - EmployeeService.java
                         - PlayerService.java
                     - ClubAppApplication.java
+                    
 - [volver](#volver)
 
 ### Estructura_Frontend
@@ -139,6 +141,7 @@ ClubAPP es un Website responsive que brinda a clubes de fútbol una plataforma b
         - postcss.config.js
         - tailwind.config.ts
         - tsconfig.json
+        
 - [volver](#volver)
 
 ## Instalación 
@@ -164,7 +167,7 @@ Abrir en [http://localhost:3000](http://localhost:3000)
 
 - [volver](#volver)
 
-## Licencia - [volver](#volver)
+## Licencia
 
     MIT License
 
@@ -187,4 +190,5 @@ Abrir en [http://localhost:3000](http://localhost:3000)
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+    
 - [volver](#volver)
