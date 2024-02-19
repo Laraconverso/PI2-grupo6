@@ -17,13 +17,6 @@
   display: none;
 }
 
-header{
-  background-image: url("../../public/bannerFootball.png");
-  background-size:contain;
-  background-repeat: no-repeat;
-  height: 25rem;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

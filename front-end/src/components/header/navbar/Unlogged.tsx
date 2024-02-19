@@ -1,9 +1,29 @@
+'use client'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 import { Dispatch, SetStateAction, useState } from "react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { authDNI } from "@/auth";
+
+const Unlogged = () => {
+
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const toggleNavbar = () => {
+        setIsOpen(!isOpen);
+      };
+    
+  return (
+    <div>
+      <button onClick={toggleNavbar} className="group bg-primary-500 font-squada rounded-3xl p-1 px-2 drop-shadow-sm text-baltic-sea-900">
+        <p className="drop-shadow-md group-active:scale-95">Inicia sesión</p>
+        </button>
+      {
+        isOpen && <Login setIsOpen={setIsOpen} />
+      }
+    </div>
+  )
+}
 
 type Inputs = {
   dni: string,
@@ -14,6 +34,7 @@ const schema: yup.ObjectSchema<Inputs> = yup.object({
 })
 
 const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+  const router = useRouter()
   const [LoginState, setLoginState] = useState<"none" | "loading" | "notFound">("none")
 
   const closeModal = () => {
@@ -38,7 +59,7 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
 
   return (
 
-    <div className="fixed top-0 w-screen h-screen flex text-primary-500 justify-center">
+    <div className="fixed inset-0 max-w-screen max-h-screen flex text-primary-500 justify-center">
       <div className="fixed inset-0 w-screen h-screen bg-black bg-opacity-20  backdrop-filter backdrop-blur-sm" onClick={closeModal} />
 
       <div className="relative flex flex-col bg-silver-50 bg-opacity-80 rounded-2xl text-center gap-7 z-10 my-auto py-4 text-wrap">
@@ -65,4 +86,4 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
 }
 
 
-export default Login
+export default Unlogged
