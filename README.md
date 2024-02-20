@@ -2,6 +2,12 @@
 <div align="center">
   <img src="https://github.com/Laraconverso/PI2-grupo6/assets/87839629/4f29a572-1021-4683-b93d-276df21a7de6" alt="Banner de Fútbol">
 </div>
+
+[![Node.js Version](https://img.shields.io/badge/Node.js-18+-blue.svg)](https://nodejs.org/)
+[![Java Version](https://img.shields.io/badge/Java-17-orange.svg)]()
+[![Spring Boot Version](https://img.shields.io/badge/SpringBoot-3.2.2-yellow.svg)]()
+[![NPM License](https://img.shields.io/npm/l/all-contributors.svg?style=flat)](https://github.com/Laraconverso/PI2-grupo6/blob/master/LICENSE)
+
 <br>
 CLUBAPP🥅⚽ es un Website responsive que brinda a clubes de fútbol una plataforma básica para gestionar a sus jugadores y empleados (directores técnicos) de manera eficiente, y por otro lado ofrecer a los usuarios una interfaz atactiva y sencilla de utilizar.
 
@@ -176,7 +182,6 @@ CLUBAPP🥅⚽ es un Website responsive que brinda a clubes de fútbol una plata
     git clone git@github.com:Laraconverso/PI2-grupo6.git
 
 ### Front-end
-
     ```bash
     npm install
 
