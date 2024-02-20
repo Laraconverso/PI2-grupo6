@@ -130,7 +130,7 @@ CLUBAPP🥅⚽ es un Website responsive que ofrecer una solución integral a clu
             |   |_admin
             |   |   |_forms
             |   |       - CreateDT.tsx
-            |   |       - CreateUser.tsx
+            |   |       - CreateUserForm.tsx
             |   |       - LoginAdmin.tsx
             |   |    - page.tsx  
             |   |_login
@@ -162,9 +162,11 @@ CLUBAPP🥅⚽ es un Website responsive que ofrecer una solución integral a clu
             |   - Footer.tsx
             |_fonts (fonts)
             |_lib
-                - actions.ts
+            |   - admin.actions.ts
+            |_models
+                - admin.model.ts
+                - user.model.ts
             - auth.ts
-            - lib.ts
             - middleware.ts    
         - next.config.mjs
         - package-lock.json
