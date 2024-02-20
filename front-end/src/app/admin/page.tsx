@@ -1,5 +1,5 @@
 import { cookies } from "next/headers"
-import CreateUser from "./forms/CreateUser"
+import CreateUser from "./forms/CreateUserForm"
 import LoginAdmin from "./forms/LoginAdmin"
 
 const page = async() => {
