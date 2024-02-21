@@ -1,5 +1,4 @@
 'use client'
-import ButtonForm from "@/components/ButtonSubmitForm"
 import { createUserAction } from "@/lib/admin.actions"
 import { DevTool } from "@hookform/devtools"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -73,7 +72,7 @@ const CreateUserForm = () => {
                         </div>
                     ))}
                 </div>
-                <ButtonForm text={"Alta Socio"}/>
+                <button type="submit" className="text-primary-50 p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-2xl font-squada border-2 border-baltic-sea-900 drop-shadow-md active:scale-95">Alta Socio</button>
             </form>
             <DevTool control={control} />
         </section>

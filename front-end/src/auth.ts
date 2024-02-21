@@ -22,17 +22,21 @@ const users = [
 export async function authDNI(formData: FormData) {
     const dni = formData.get("dni")?.toString()  ;
     if (!dni) return false; 
-    const validDNI = validateDNI(dni)
+    const validDNI = await validateDNI(dni)
     if (!validDNI) return false;
 
-    const expires = new Date(Date.now() + 50 * 1000);
-    cookies().set("dni", dni, {expires , httpOnly: true})
-    // cookies().set("navbarState", "none", {httpOnly: true})
+    cookies().set("dni", dni, {maxAge: 60 , httpOnly: true})
     return true
 }
 
-const validateDNI = (dni: string) => {
-    return users.some(user => user.dni === dni)
+const validateDNI =async (dni: string) => {
+    try {
+        const getUserByDNI = await fetch(`http://localhost:8080/players/getByDni/${dni}`, {method: 'GET'})
+        return getUserByDNI.status === 200 ? true : false; 
+        
+    } catch (error) {
+        return false
+    }
 }
 
 export async function authUser(formData:FormData) {
@@ -40,11 +44,13 @@ export async function authUser(formData:FormData) {
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
 
-    const user = users.find(user => user.dni === dni)
-    
+    const getUserByDNI = await fetch(`http://localhost:8080/players/getByDni/${dni}`, {method: 'GET'})
+
+    const user = await getUserByDNI.json()
+
     if (!user) return false;
     cookies().set("userAuth", "true")
-    return user.email === email && user.password === password ? true : false;
+    return user.userEmail === email && user.userPassword === password ? true : false;
 }
 
 export async function adminAuth (password?: string ){
