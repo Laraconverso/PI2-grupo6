@@ -1,5 +1,4 @@
 import { cookies } from "next/headers"
-import CreateUser from "./forms/CreateUserForm"
 import LoginAdmin from "./forms/LoginAdmin"
 import footballAdminBanner from "@public/bannerAdmin.png"
 import Image from "next/image"
