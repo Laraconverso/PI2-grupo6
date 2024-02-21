@@ -18,8 +18,8 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id_team")
-    private Long idTeam;
+    @Column(name= "team_id")
+    private Long teamId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn(name = "coach_number")
@@ -27,7 +27,7 @@ public class Team {
     private Coach coach;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_category")
+    @JoinColumn(name="category_id")
     private Category category;
 
     @Column(name = "team_name", nullable = false, unique = false)
@@ -54,5 +54,6 @@ public class Team {
     @JsonIgnore
     private Statistic statistic;
 
-
+    public void setId(Long id) {
+    }
 }

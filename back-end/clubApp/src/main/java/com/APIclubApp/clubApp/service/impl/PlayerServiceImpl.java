@@ -36,10 +36,10 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player updatePlayer(Player updatedPlayer) {
-        if (playerRepository.existsById(updatedPlayer.getIdPlayer())) {
+        if (playerRepository.existsById(updatedPlayer.getPlayerId())) {
             return playerRepository.save(updatedPlayer);
         } else {
-            throw new RuntimeException("Player not found with id: " + updatedPlayer.getIdPlayer());
+            throw new RuntimeException("Player not found with id: " + updatedPlayer.getPlayerId());
         }
     }
 

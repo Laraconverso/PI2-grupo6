@@ -13,16 +13,16 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_payment")
-    private Long idPayment;
+    @Column(name = "payment_id")
+    private Long paymentId;
 
     @Column(name = "amount")
     private Integer amount;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @PrimaryKeyJoinColumn(name = "id_player")
+    @PrimaryKeyJoinColumn(name = "player_id")
     private Player player;
 
-
-
+    public void setId(Long id) {
+    }
 }

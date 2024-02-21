@@ -17,8 +17,8 @@ public class Statistic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id_statistic")
-    private Long idStatistic;
+    @Column(name= "statistic_id")
+    private Long statisticId;
 
     @Column(name= "goal_scored", nullable = false, unique = false)
     private Integer goalScored;
@@ -27,8 +27,9 @@ public class Statistic {
     private Integer goalAssisted;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_team")
+    @JoinColumn(name = "team_id")
     private Team team;
 
-
+    public void setId(Long id) {
+    }
 }

@@ -20,8 +20,8 @@ public class Player extends User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_player")
-    private Long idPlayer;
+    @Column(name = "player_id")
+    private Long playerId;
 
     @Column(name = "player_position", nullable = true, unique = false)
     private Long playerPosition;
@@ -40,7 +40,7 @@ public class Player extends User{
     private Boolean memberChangePassword;*/
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_team")
+    @JoinColumn(name = "team_id")
     @JsonIgnore
     private Team team;
 
