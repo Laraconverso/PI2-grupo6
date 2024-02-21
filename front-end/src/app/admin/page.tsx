@@ -20,7 +20,7 @@ const page = async() => {
       {adminAuth ? (
         <main className="w-screen bg-primary-400 flex flex-col gap-5 items-center p-4 md:min-h-screen">
           <div className={`mt-10`}>
-            <h1 className="text-center text-5xl font-bauhs"> Bienvenido a ClubAPP</h1>
+            <h1 className="text-center text-5xl font-bauhs"> Bienvenido DT</h1>
           </div>
           <div className="justify-center">
             <ButtonViewForm/>
