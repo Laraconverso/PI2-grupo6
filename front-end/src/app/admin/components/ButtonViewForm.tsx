@@ -10,67 +10,60 @@ import CreateDT from '../forms/CreateDT'
 import CreateMatch from '../forms/CreateMatch'
 import CreateTeam from '../forms/CreateTeam'
 
+type FormToShow = "createTeam" | "createMatch" | "createUser" | "createDT"
+
 const ButtonViewForm = () => {
+  const [formToShow, setFormToShow] = useState<FormToShow>("createUser")
 
-  const [showCreateUserForm, setShowCreateUserForm] = useState(false); 
-  const [showCreateDTForm, setShowCreateDTForm] = useState(false); 
-  const [showCreateTeamForm, setShowCreateTeamForm] = useState(false); 
-  const [showCreateMatchForm, setShowCreateMatchForm] = useState(false); 
 
-  const handleCreateUserClick = () => {
-    setShowCreateDTForm(false)
-    setShowCreateTeamForm(false)
-    setShowCreateMatchForm(false)
-    setShowCreateUserForm(!showCreateUserForm); 
-  };
-
-  const handleCreateDTClick = () => {
-    setShowCreateUserForm(false)
-    setShowCreateTeamForm(false)
-    setShowCreateMatchForm(false)
-    setShowCreateDTForm(!showCreateDTForm); 
-  };
-
-  const handleCreateTeamClick = () => {
-    setShowCreateUserForm(false)
-    setShowCreateDTForm(false)
-    setShowCreateMatchForm(false)
-    setShowCreateTeamForm(!showCreateTeamForm); 
-  };
-
-  const handleCreateMatchesClick = () => {
-    setShowCreateUserForm(false)
-    setShowCreateDTForm(false)
-    setShowCreateTeamForm(false); 
-    setShowCreateMatchForm(!showCreateMatchForm)
-  };
   return (
-    <div className='flex flex-col items-center justify-center'>
-    <div className='flex gap-8 max-h-80'>
-      <section className='bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={handleCreateTeamClick}>
-        <p className='text-center text-xl font-bauhs text-primary-500'>ALTA EQUIPO</p>
-        <Image src={altaEquipo} width={200} height={150} alt="alta equipo"/>
-      </section>
-      <section className='bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={handleCreateDTClick}>
-        <p className='text-center text-xl font-bauhs text-primary-500'>ALTA DT</p>
-        <Image src={altaDT} width={200} height={150} alt="alta equipo"/>
-      </section>
-      <section className='bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={handleCreateUserClick}>
-        <p className='text-center text-xl font-bauhs text-primary-500'>ALTA JUGADOR</p>
-        <Image src={altaJugador} width={150} height={150} alt="alta equipo"/>
-      </section>
-      <section className='bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={handleCreateMatchesClick}>
-        <p className='text-center text-xl font-bauhs text-primary-500'>ALTA PARTIDO</p>
-        <Image src={altaPartido} width={200} height={150} alt="alta equipo"/>
-      </section>
+    <div className='flex-col items-center justify-center'>
+      <div className='grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6 md:p-6'>
+
+        <section className='flex flex-col bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createTeam")}>
+          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA EQUIPO</p>
+          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
+            <Image src={altaEquipo} className='object-cover object-bottom' alt="alta equipo" />
+          </figure>
+        </section>
+
+        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createDT")}>
+          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA DT</p>
+          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
+            <Image src={altaDT} className='object-cover object-center' alt="alta equipo" />
+          </figure>
+        </section>
+
+        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createUser")}>
+          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA JUGADOR</p>
+          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
+            <Image src={altaJugador} className='object-cover object-center' alt="alta equipo" />
+          </figure>
+        </section>
+
+        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createMatch")}>
+          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA PARTIDO</p>
+          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
+            <Image src={altaPartido} className='object-cover object-center' alt="alta equipo" />
+          </figure>
+        </section>
+
+      </div>
+      <div >
+        {(() => {
+          switch (formToShow) {
+            case "createUser":
+              return <CreateUserForm />
+            case "createDT":
+              return <CreateDT />
+            case "createMatch":
+              return <CreateMatch />
+            case "createTeam":
+              return <CreateTeam />
+          }
+        })()}
+      </div>
     </div>
-    <div >
-      {showCreateUserForm && <CreateUserForm />}
-      {showCreateDTForm && <CreateDT />}
-      {showCreateTeamForm && <CreateTeam />}
-      {showCreateMatchForm && <CreateMatch/>}
-    </div>
-  </div>
   )
 }
 export default ButtonViewForm
