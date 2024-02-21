@@ -5,7 +5,7 @@ import altaPartido from '@public/altaPartido.png'
 import altaJugador from '@public/altaJugador.jpeg'
 import Image from "next/image"
 import { useState } from 'react'
-import CreateUser from '../forms/CreateUser'
+import CreateUser from '../forms/CreateUserForm'
 import CreateDT from '../forms/CreateDT'
 import CreateMatch from '../forms/CreateMatch'
 import CreateTeam from '../forms/CreateTeam'
