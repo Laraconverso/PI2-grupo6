@@ -56,6 +56,6 @@ export async function authUser(formData:FormData) {
 export async function adminAuth (password?: string ){
     const validPassword = password === process.env.ADMIN_PASSWORD ? true : false;
     if (!validPassword) return false
-    cookies().set("adminAuth", "true" ,{ maxAge: 5 })
+    cookies().set("adminAuth", "true" ,{ maxAge: 50 })
     return true
 }

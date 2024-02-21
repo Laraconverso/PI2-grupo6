@@ -51,9 +51,9 @@ const CreateUserForm = () => {
     }
 
     return (
-        <section className="w-screen bg-primary-400 flex flex-col gap-5 items-center text-baltic-sea-900 p-4">
+        <section className="relative w-screen bg-primary-400 flex flex-col gap-5 items-center text-baltic-sea-900 p-4">
 
-            {formState === "userCreated" && <span>Usuario creado exitosamente</span>}
+            {formState === "userCreated"! && <span className="animate-bounce absolute top-0">Usuario creado exitosamente</span>}
 
             <span className="opacity-0 transition-opacity ">usuario creado correctamente</span>
             <h2 className="font-squada text-2xl md:text-4xl">Formulario alta <b>Usuario</b></h2>
@@ -74,7 +74,7 @@ const CreateUserForm = () => {
                 </div>
                 <button type="submit" className="text-primary-50 p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-2xl font-squada border-2 border-baltic-sea-900 drop-shadow-md active:scale-95">Alta Socio</button>
             </form>
-            <DevTool control={control} />
+            {/* <DevTool control={control} /> */}
         </section>
     )
 }

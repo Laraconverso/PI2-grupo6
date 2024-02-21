@@ -3,6 +3,7 @@
 import { usePathname  } from "next/navigation"
 import Unlogged from "./Unlogged"
 import Link from "next/link"
+import Logged from "./Logged"
 
 const Navbar = () => {
 const path = usePathname()
@@ -17,15 +18,7 @@ const path = usePathname()
             case "/login":
               return <></>
             case "/user":
-              return (
-                <div>
-                  <Link href={'/'}>
-                    <button className="group bg-primary-500 font-squada rounded-3xl p-1 px-2 drop-shadow-sm text-baltic-sea-900">
-                      <p className="drop-shadow-md group-active:scale-95">Cerrar Sesion</p>
-                    </button>
-                  </Link>
-                </div>
-              )
+              return <Logged/>
             case "/admin":
               return (
                 <div>

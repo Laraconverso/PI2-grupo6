@@ -62,7 +62,7 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
     <div className="fixed inset-0 max-w-screen max-h-screen flex text-primary-500 justify-center">
       <div className="fixed inset-0 w-screen h-screen bg-black bg-opacity-20  backdrop-filter backdrop-blur-sm" onClick={closeModal} />
 
-      <div className="relative flex flex-col bg-silver-50 bg-opacity-80 rounded-2xl text-center gap-7 z-10 my-auto py-4 text-wrap">
+      <div className="relative flex flex-col bg-silver-50 bg-opacity-80 rounded-2xl text-center gap-7 z-10 my-auto py-4 text-wrap max-w-xs items-center">
         <button className="font-semibold absolute top-3 right-5 cursor-pointer z-10" onClick={closeModal}>x</button>
 
         <p className="text-2xl font-bauhs drop-shadow-md">Ingresa tu DNI</p>
@@ -73,11 +73,11 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
             <span className="text-center text-xs">{errors.dni?.message}</span>
           </div>
           {
-            LoginState === "loading" ? <span>Loading...</span> : <button className="bg-silver-950 font-bold text-sm-600 w-fit py-1 px-4 m-auto rounded-3xl hover:scale-105 transition drop-shadow-md" type="submit" >INGRESAR</button>
+            LoginState === "loading" ? <span>Cargando...</span> : <button className="bg-silver-950 font-bold text-sm-600 w-fit py-1 px-4 m-auto rounded-3xl hover:scale-105 transition drop-shadow-md" type="submit" >INGRESAR</button>
           }
         </form>
         {
-          LoginState === "notFound" && <p>el usuario no ha sido encontrado en nuestra base de datos</p>
+          LoginState === "notFound" && <p className="text-sm">El usuario no ha sido encontrado en nuestra base de datos</p>
         }
       </div>
     </div>
