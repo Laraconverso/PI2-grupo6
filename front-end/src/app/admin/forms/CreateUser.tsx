@@ -1,3 +1,4 @@
+
 'use client'
 import ButtonForm from "@/components/ButtonSubmitForm"
 import { DevTool } from "@hookform/devtools"
@@ -32,13 +33,13 @@ const placeholders: Record<keyof Inputs, string> = {
     address: "Dirección *",
     password: "Contraseña *"
 };
-const CreateDT = () => {
+const CreateUser = () => {
 
     const { register, handleSubmit, control } = useForm<Inputs>({ resolver: yupResolver(schema) })
 
     return (
-        <section className="w-screen bg-primary-400 flex flex-col gap-5 items-center text-baltic-sea-900 p-4">
-            <h2 className="font-squada text-2xl md:text-4xl">Formulario alta <b>DT</b></h2>
+        <section className="w-screen bg-primary-400 flex flex-col gap-5 items-center text-baltic-sea-900 p-4 ">
+            <h2 className="font-squada text-2xl md:text-4xl">Formulario alta <b>Usuario</b></h2>
             <form className="flex flex-col gap-4" action={()=>false}>
                 <div className="grid md:grid-cols-2 gap-4">
 
@@ -52,9 +53,9 @@ const CreateDT = () => {
                 </div>
                 <button type="submit" className="text-primary-50 p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-2xl font-squada border-2 border-baltic-sea-900 drop-shadow-md active:scale-95">Alta Socio</button>
             </form>
-            {/* <DevTool control={control} /> */}
+            <DevTool control={control} />
         </section>
     )
 }
 
-export default CreateDT
+export default CreateUser
