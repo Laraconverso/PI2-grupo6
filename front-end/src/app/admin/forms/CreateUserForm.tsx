@@ -51,7 +51,7 @@ const CreateUserForm = () => {
     }
 
     return (
-        <section className="relative w-screen bg-primary-400 flex flex-col gap-5 items-center text-baltic-sea-900 p-4">
+        <section className="relative w-screen flex flex-col gap-5 items-center text-baltic-sea-900 p-4">
 
             {formState === "userCreated"! && <span className="animate-bounce absolute top-0">Usuario creado exitosamente</span>}
 
@@ -68,7 +68,7 @@ const CreateUserForm = () => {
                                 name={fieldName}
                                 className="bg-transparent text-center md:text-left placeholder:text-baltic-sea-900 border-b-[1px] border-baltic-sea-900 outline-none"
                                 placeholder={placeholders[fieldName as keyof Inputs]} />
-                            {errors[fieldName as keyof Inputs]?.message && <span>{errors[fieldName as keyof Inputs]?.message}</span>}
+                            {errors[fieldName as keyof Inputs]?.message && <span className="text-sm text-red-500">{errors[fieldName as keyof Inputs]?.message}</span>}
                         </div>
                     ))}
                 </div>

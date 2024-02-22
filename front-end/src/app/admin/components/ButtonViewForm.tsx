@@ -1,55 +1,33 @@
 'use client'
-import altaDT from '@public/altaDT.jpeg'
-import altaEquipo from '@public/altaEquipo.png'
-import altaPartido from '@public/altaPartido.png'
-import altaJugador from '@public/altaJugador.jpeg'
 import Image from "next/image"
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import CreateUserForm from '../forms/CreateUserForm'
 import CreateDT from '../forms/CreateDT'
 import CreateMatch from '../forms/CreateMatch'
 import CreateTeam from '../forms/CreateTeam'
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
+import addPlayer from '@public/addPlayer.svg'
+import addDT from '@public/addDT.svg'
+import addTeam from '@public/addTeam.svg'
+import addMatch from '@public/addMatch.svg'
 
 type FormToShow = "createTeam" | "createMatch" | "createUser" | "createDT"
 
 const ButtonViewForm = () => {
+
   const [formToShow, setFormToShow] = useState<FormToShow>("createUser")
 
 
   return (
     <div className='flex-col items-center justify-center'>
-      <div className='grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6 md:p-6'>
+      <div className='grid grid-cols-2  gap-5 m-3 text-center p-10 font-squada md:grid-cols-4 md:gap-20 max-w-4xl mx-auto'>
 
-        <section className='flex flex-col bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createTeam")}>
-          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA EQUIPO</p>
-          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
-            <Image src={altaEquipo} className='object-cover object-bottom' alt="alta equipo" />
-          </figure>
-        </section>
-
-        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createDT")}>
-          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA DT</p>
-          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
-            <Image src={altaDT} className='object-cover object-center' alt="alta equipo" />
-          </figure>
-        </section>
-
-        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createUser")}>
-          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA JUGADOR</p>
-          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
-            <Image src={altaJugador} className='object-cover object-center' alt="alta equipo" />
-          </figure>
-        </section>
-
-        <section className='flex flex-col justify-around bg-silver-950 px-4 py-5 rounded-3xl cursor-pointer' onClick={() => setFormToShow("createMatch")}>
-          <p className='text-center text-xl font-bauhs text-primary-500'>ALTA PARTIDO</p>
-          <figure className='w-full max-h-24 overflow-hidden flex items-center justify-center'>
-            <Image src={altaPartido} className='object-cover object-center' alt="alta equipo" />
-          </figure>
-        </section>
-
+    <FormOption img={addTeam} title="Alta equipo" setForm={setFormToShow} option="createTeam"/>
+    <FormOption img={addDT} title="Alta DT" setForm={setFormToShow} option="createDT"/>
+    <FormOption img={addPlayer} title="Alta jugador" setForm={setFormToShow} option="createUser"/>
+    <FormOption img={addMatch} title="Alta partido" setForm={setFormToShow} option="createMatch"/>
       </div>
-      <div >
+      <div className="bg-baltic-sea-300">
         {(() => {
           switch (formToShow) {
             case "createUser":
@@ -64,6 +42,18 @@ const ButtonViewForm = () => {
         })()}
       </div>
     </div>
+  )
+}
+
+const FormOption = ({img, title, setForm, option}:{img: StaticImport, title: string, setForm: Dispatch<SetStateAction<FormToShow>>, option: FormToShow}) => {
+  
+  return (
+    <section onClick={()=>setForm(option)} className='flex flex-col justify-around bg-baltic-sea-900 px-3 pb-2 rounded-md text-xl border-primary-500 text-primary-50 focus:bg-baltic-sea-950 focus:border-[5px] transition box-border outline-none' tabIndex={0}>
+      <p>{title}</p>
+      <figure className='w-full overflow-hidden flex items-center justify-center rounded-md'>
+        <Image src={img} className='object-cover object-center' alt={title} />
+      </figure>
+    </section>
   )
 }
 export default ButtonViewForm
