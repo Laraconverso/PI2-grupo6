@@ -23,17 +23,21 @@ public class Player extends User{
     @Column(name = "id_player")
     private Long idPlayer;
 
+    //decidir si lo colocaremos
 //    @Column(name = "player_position", nullable = true, unique = false)
-//    @JsonIgnore
+//
 //    private Long playerPosition;
 
+    //decidir si lo colocaremos
 //    @Column(name = "player_image", nullable = false, unique = false)
+//    no deberia ir ese JsonIgnore
 //    @JsonIgnore
 //    private String playerImage;
 
     @Column(name = "player_birthdate", nullable = false, unique = false)
     private String playerBirthdate;
 
+    //hay que descomentar esto
 //    @Column(name = "player_feePaid", nullable = false, unique = false)
 //    @JsonIgnore
 //    private Boolean playerFeePaid;
@@ -44,7 +48,8 @@ public class Player extends User{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_team")
-    @JsonIgnore
+    //comenté esto
+    //@JsonIgnore
     private Team team;
 
 
